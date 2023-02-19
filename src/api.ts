@@ -1,3 +1,3 @@
 import './main/config/ModuleAlias'
 
-console.log('Server is working')
+console.log('Testing lint staged')
