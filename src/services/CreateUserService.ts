@@ -1,4 +1,4 @@
-import type { CreateUser } from '@/interfaces'
+import { CreateUser } from '@/interfaces'
 
 export class CreateUserService implements CreateUser {
   async execute(input: CreateUser.Input): Promise<CreateUser.Output> {
