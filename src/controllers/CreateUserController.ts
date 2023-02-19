@@ -8,7 +8,7 @@ export class CreateUserController {
   ) { }
 
   async handle(req: Request, res: Response): Promise<Response> {
-    const result = this.createUserService.execute(req.body)
+    const result = await this.createUserService.execute(req.body)
 
     return res.status(201).json(result)
   }

@@ -2,7 +2,11 @@ import './main/config/ModuleAlias'
 
 import express from 'express'
 
+import { userRouter } from '@/routes/userRoutes'
+
 const app = express()
 app.use(express.json())
 
-app.listen(3333, () => { console.log('Server is running with nodemon!') })
+app.use('/user', userRouter)
+
+app.listen(3333, () => { console.log('Server is running with nodemon! On port:' + 3333) })
