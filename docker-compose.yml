@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgresql
+    restart: always
+    environment:
+      - POSTGRES_USER=prisma
+      - POSTGRES_PASSWORD=prisma
+      - POSTGRES_DB=dev
+    ports:
+      - '5432:5432'
