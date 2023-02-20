@@ -1,3 +1,4 @@
+import { UserRepository } from '@/data/prisma'
 import { CreateUser } from '@/interfaces'
 import { CreateUserService } from '@/services/CreateUserService'
 import { Request, Response } from 'express'
@@ -14,5 +15,6 @@ export class CreateUserController {
   }
 }
 
-const createUserService = new CreateUserService()
+const userRepository = new UserRepository()
+const createUserService = new CreateUserService(userRepository)
 export const createUserController = new CreateUserController(createUserService)
