@@ -1,3 +1,5 @@
+import 'express-async-errors'
+
 import './main/config/ModuleAlias'
 
 import express from 'express'

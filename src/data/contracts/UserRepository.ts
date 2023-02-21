@@ -14,3 +14,14 @@ export namespace CreateUserRepository {
     email: string
   }
 }
+
+export interface UpdateRefreshTokenRepository {
+  updateRefreshToken: (input: UpdateRefreshTokenRepository.Input) => Promise<void>
+}
+
+export namespace UpdateRefreshTokenRepository {
+  export type Input = {
+    email: string
+    refreshToken: string
+  }
+}

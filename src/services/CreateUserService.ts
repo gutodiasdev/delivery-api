@@ -1,12 +1,12 @@
 import { sign } from 'jsonwebtoken'
 import { v4 as uuid } from 'uuid'
 
-import { CreateUserRepository } from '@/data/contracts'
+import { CreateUserRepository, UpdateRefreshTokenRepository } from '@/data/contracts'
 import { CreateUser } from '@/interfaces'
 
 export class CreateUserService implements CreateUser {
   constructor(
-    private readonly userRepository: CreateUserRepository
+    private readonly userRepository: CreateUserRepository & UpdateRefreshTokenRepository
   ) { }
 
   async execute(input: CreateUser.Input): Promise<CreateUser.Output> {
@@ -14,8 +14,11 @@ export class CreateUserService implements CreateUser {
     try {
       await this.userRepository.create(input)
 
-      const token = sign({ name, email, password }, 'SECRET', { expiresIn: '15m' })
       const refreshToken = uuid()
+
+      await this.userRepository.updateRefreshToken({ email, refreshToken })
+
+      const token = sign({ name, email, password }, 'SECRET', { expiresIn: '15m' })
 
       return {
         token,
