@@ -1,5 +1,6 @@
 
 import { CreateUserRepository, UpdateRefreshTokenRepository } from '@/data/contracts'
+import { AppError, HttpCode } from '@/errors'
 import { prisma } from '@/main/config/prisma'
 import dayjs from 'dayjs'
 
@@ -25,23 +26,35 @@ export class UserRepository implements
     }
   }
 
-  async updateRefreshToken(input: UpdateRefreshTokenRepository.Input): Promise<void> {
-    try {
-      await prisma.user.update({
-        where: {
-          email: input.email
-        },
-        data: {
-          refreshToken: {
-            create: {
-              token: input.refreshToken,
-              expiresIn: dayjs().add(30, 'day').toString()
-            }
+  async updateRefreshToken({ email, refreshToken }: UpdateRefreshTokenRepository.Input): Promise<void> {
+    if (!email) {
+      throw new AppError({
+        name: 'Failed Refresh Token Update',
+        description: 'User was not found',
+        httpCode: HttpCode.UNAUTHORIZED
+      })
+    }
+
+    if (typeof refreshToken !== 'string') {
+      throw new AppError({
+        name: 'Failed Refresh Token Update',
+        description: 'Refresh Token type is invalid',
+        httpCode: HttpCode.UNAUTHORIZED
+      })
+    }
+
+    await prisma.user.update({
+      where: {
+        email
+      },
+      data: {
+        refreshToken: {
+          create: {
+            token: refreshToken,
+            expiresIn: dayjs().add(30, 'day').toString()
           }
         }
-      })
-    } catch {
-      throw new Error('Failed to update refresh token')
-    }
+      }
+    })
   }
 }
