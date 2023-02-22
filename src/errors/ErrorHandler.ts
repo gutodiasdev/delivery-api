@@ -8,6 +8,7 @@ export function ErrorHandler(err: Error & AppError, req: Request, res: Response,
   res.status(errCode).json({
     success: false,
     status: errCode,
+    name: err.name,
     message: errMessage
   })
 }
