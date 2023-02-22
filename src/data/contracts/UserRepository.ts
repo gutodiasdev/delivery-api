@@ -28,7 +28,7 @@ export namespace UpdateRefreshTokenRepository {
 }
 
 export interface FindByEmailRepository {
-  findByemail: (input: FindByEmailRepository.Input) => Promise<FindByEmailRepository.Output>
+  findByEmail: (input: FindByEmailRepository.Input) => Promise<FindByEmailRepository.Output>
 }
 
 export namespace FindByEmailRepository {
@@ -40,5 +40,6 @@ export namespace FindByEmailRepository {
     id: string
     name: string
     email: string
+    password: string
   }
 }

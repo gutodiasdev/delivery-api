@@ -63,7 +63,7 @@ export class UserRepository implements
     })
   }
 
-  async findByemail(input: FindByEmailRepository.Input): Promise<FindByEmailRepository.Output> {
+  async findByEmail(input: FindByEmailRepository.Input): Promise<FindByEmailRepository.Output> {
     const user = await prisma.user.findFirst({
       where: {
         email: input.email
@@ -81,7 +81,8 @@ export class UserRepository implements
     return {
       id: user.id,
       email: user.email,
-      name: user.name
+      name: user.name,
+      password: user.password
     }
   }
 }

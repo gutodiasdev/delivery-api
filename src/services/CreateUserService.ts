@@ -18,7 +18,7 @@ export class CreateUserService implements CreateUser {
   async execute(input: CreateUser.Input): Promise<CreateUser.Output> {
     const { name, email, password } = input
 
-    const userAlreadyExists = await this.userRepository.findByemail({ email })
+    const userAlreadyExists = await this.userRepository.findByEmail({ email })
     if (userAlreadyExists) {
       throw new AppError({
         name: 'UserAlreadyExists',
