@@ -1,12 +1,15 @@
+import { hash } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 import { v4 as uuid } from 'uuid'
 
 import {
-  CreateUserRepository, UpdateRefreshTokenRepository, VerifyUserRepository
+  CreateUserRepository,
+  UpdateRefreshTokenRepository,
+  VerifyUserRepository
 } from '@/data/contracts'
-import { AppError, HttpCode } from '@/errors'
+import { AppError } from '@/errors'
 import { CreateUser } from '@/interfaces'
-import { hash } from 'bcryptjs'
+import { HttpCode } from '@/utils'
 
 export class CreateUserService implements CreateUser {
   constructor(

@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
-import { AppError, HttpCode } from './AppError'
+
+import { HttpCode } from '@/utils'
+import { AppError } from './AppError'
 
 export function ErrorHandler(err: Error & AppError, req: Request, res: Response, next: NextFunction): any {
   const errCode = err.httpCode || HttpCode.INTERNAL_SERVER_ERROR

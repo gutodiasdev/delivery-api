@@ -1,7 +1,8 @@
 
 import { CreateUserRepository, FindByEmailRepository, UpdateRefreshTokenRepository, VerifyUserRepository } from '@/data/contracts'
-import { AppError, HttpCode } from '@/errors'
+import { AppError } from '@/errors'
 import { prisma } from '@/main/config/prisma'
+import { HttpCode } from '@/utils'
 import dayjs from 'dayjs'
 
 export class UserRepository implements
