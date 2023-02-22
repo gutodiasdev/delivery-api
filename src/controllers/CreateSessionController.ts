@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 
+import { UserRepository } from '@/data/prisma'
 import { CreateSession } from '@/interfaces'
 import { CreateSessionService } from '@/services/CreateSessionService'
 
@@ -15,5 +16,6 @@ export class CreateSessionController {
   }
 }
 
-const createSessionService = new CreateSessionService()
+const userRepository = new UserRepository()
+const createSessionService = new CreateSessionService(userRepository)
 export const createSessionController = new CreateSessionController(createSessionService)

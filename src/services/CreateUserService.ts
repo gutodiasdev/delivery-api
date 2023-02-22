@@ -8,6 +8,7 @@ import {
 } from '@/data/contracts'
 import { AppError, HttpCode } from '@/errors'
 import { CreateUser } from '@/interfaces'
+import { hash } from 'bcryptjs'
 
 export class CreateUserService implements CreateUser {
   constructor(
@@ -26,7 +27,9 @@ export class CreateUserService implements CreateUser {
       })
     }
 
-    await this.userRepository.create(input)
+    const hashedPassword = await hash(password, 10)
+
+    await this.userRepository.create({ ...input, password: hashedPassword })
 
     const refreshToken = uuid()
 
