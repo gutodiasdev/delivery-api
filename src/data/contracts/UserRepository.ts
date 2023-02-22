@@ -43,3 +43,13 @@ export namespace FindByEmailRepository {
     password: string
   }
 }
+
+export interface VerifyUserRepository {
+  verifyByEmail: (input: VerifyUserRepository.Input) => Promise<void>
+}
+
+export namespace VerifyUserRepository {
+  export type Input = {
+    email: string
+  }
+}
