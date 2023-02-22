@@ -1,12 +1,13 @@
 
-import { CreateUserRepository, UpdateRefreshTokenRepository } from '@/data/contracts'
+import { CreateUserRepository, FindByEmailRepository, UpdateRefreshTokenRepository } from '@/data/contracts'
 import { AppError, HttpCode } from '@/errors'
 import { prisma } from '@/main/config/prisma'
 import dayjs from 'dayjs'
 
 export class UserRepository implements
   CreateUserRepository,
-  UpdateRefreshTokenRepository {
+  UpdateRefreshTokenRepository,
+  FindByEmailRepository {
   async create(input: CreateUserRepository.Input): Promise<CreateUserRepository.Output> {
     if (!input) {
       throw new AppError({
@@ -60,5 +61,27 @@ export class UserRepository implements
         }
       }
     })
+  }
+
+  async findByemail(input: FindByEmailRepository.Input): Promise<FindByEmailRepository.Output> {
+    const user = await prisma.user.findFirst({
+      where: {
+        email: input.email
+      }
+    })
+
+    if (!user) {
+      throw new AppError({
+        name: 'Faile to find user',
+        description: 'User does not exists in our database',
+        httpCode: HttpCode.NOT_FOUND
+      })
+    }
+
+    return {
+      id: user.id,
+      email: user.email,
+      name: user.name
+    }
   }
 }

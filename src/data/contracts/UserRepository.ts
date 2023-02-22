@@ -1,3 +1,4 @@
+
 export interface CreateUserRepository {
   create: (input: CreateUserRepository.Input) => Promise<CreateUserRepository.Output>
 }
@@ -23,5 +24,21 @@ export namespace UpdateRefreshTokenRepository {
   export type Input = {
     email: string
     refreshToken: string
+  }
+}
+
+export interface FindByEmailRepository {
+  findByemail: (input: FindByEmailRepository.Input) => Promise<FindByEmailRepository.Output>
+}
+
+export namespace FindByEmailRepository {
+  export type Input = {
+    email: string
+  }
+
+  export type Output = {
+    id: string
+    name: string
+    email: string
   }
 }
