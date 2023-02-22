@@ -8,21 +8,25 @@ export class UserRepository implements
   CreateUserRepository,
   UpdateRefreshTokenRepository {
   async create(input: CreateUserRepository.Input): Promise<CreateUserRepository.Output> {
-    try {
-      const user = await prisma.user.create({
-        data: {
-          name: input.name,
-          email: input.email,
-          password: input.password
-        }
+    if (!input) {
+      throw new AppError({
+        name: 'Failed to create a user',
+        description: 'Some necessary parameters are missing in request',
+        httpCode: HttpCode.BAD_REQUEST
       })
+    }
 
-      return {
-        name: user.name,
-        email: user.email
+    const user = await prisma.user.create({
+      data: {
+        name: input.name,
+        email: input.email,
+        password: input.password
       }
-    } catch {
-      throw new Error('Failed to create new user')
+    })
+
+    return {
+      name: user.name,
+      email: user.email
     }
   }
 
