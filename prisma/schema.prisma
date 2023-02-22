@@ -11,12 +11,12 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(uuid())
-  name     String
-  email    String @unique
-  password String
-
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  password     String
   refreshToken RefreshToken?
+  businesses   Business[]
 }
 
 model RefreshToken {
@@ -25,5 +25,69 @@ model RefreshToken {
   expiresIn String
 
   userId String @unique
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Business {
+  id          String             @id @default(uuid())
+  name        String
+  image       String
+  description String
+  telephone   String
+  social      BusinessSocial?
+  category    BusinessCategory[]
+  address     BusinessAddress?
+  menus       BusinessMenu[]
+  userId      String
+  user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model BusinessCategory {
+  id          String   @id @default(uuid())
+  name        String
+  businesssId String
+  business    Business @relation(fields: [businesssId], references: [id], onDelete: Cascade)
+}
+
+model BusinessAddress {
+  id           String   @id @default(uuid())
+  state        String
+  city         String
+  street       String
+  neighborhood String
+  number       String
+  bussinessId  String   @unique
+  business     Business @relation(fields: [bussinessId], references: [id], onDelete: Cascade)
+}
+
+model BusinessSocial {
+  id         String   @id @default(uuid())
+  facebook   String
+  instagram  String
+  whatsapp   String
+  businessId String   @unique
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+}
+
+model BusinessMenu {
+  id         String   @id @default(uuid())
+  name       String
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+}
+
+model BusinessProducts {
+  id          String               @id @default(uuid())
+  title       String
+  image       String
+  description String
+  category    ProductsCategories[]
+  price       Float
+}
+
+model ProductsCategories {
+  id        String           @id @default(uuid())
+  name      String
+  productId String
+  product   BusinessProducts @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
