@@ -1,4 +1,5 @@
 export * from './CreateBusiness'
+export * from './CreateBusinessAddress'
 export * from './CreateSession'
 export * from './CreateUser'
 export * from './DateProvider'

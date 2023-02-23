@@ -10,3 +10,18 @@ export namespace CreateBusinessRepository {
     name: string
   }
 }
+
+export interface CreateBusinessAddressRepository {
+  createAddress: (input: CreateBusinessAddressRepository.Input) => Promise<void>
+}
+
+export namespace CreateBusinessAddressRepository {
+  export type Input = {
+    state: string
+    city: string
+    street: string
+    neighborhood: string
+    number: string
+    businessId: string
+  }
+}

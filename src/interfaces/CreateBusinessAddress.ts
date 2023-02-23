@@ -1,11 +1,17 @@
 import { HttpResponse } from '@/utils'
-import { Prisma } from '@prisma/client'
 
 export interface CreateBusinessAddress {
   execute: (input: CreateBusinessAddress.Input) => Promise<CreateBusinessAddress.Output>
 }
 
 export namespace CreateBusinessAddress {
-  export type Input = Prisma.BusinessAddressCreateInput
+  export type Input = {
+    state: string
+    city: string
+    street: string
+    neighborhood: string
+    number: string
+    businessId: string
+  }
   export type Output = HttpResponse
 }

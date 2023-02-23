@@ -56,8 +56,8 @@ model BusinessAddress {
   street       String
   neighborhood String
   number       String
-  bussinessId  String   @unique
-  business     Business @relation(fields: [bussinessId], references: [id], onDelete: Cascade)
+  businessId   String   @unique
+  business     Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
 }
 
 model BusinessSocial {
