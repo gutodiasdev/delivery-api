@@ -62,9 +62,9 @@ model BusinessAddress {
 
 model BusinessSocial {
   id         String   @id @default(uuid())
-  facebook   String
-  instagram  String
-  whatsapp   String
+  facebook   String?
+  instagram  String?
+  whatsapp   String?
   businessId String   @unique
   business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
 }
