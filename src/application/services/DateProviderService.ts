@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 
-import { DateProvider } from '@/interfaces'
+import { DateProvider } from '@/domain/interfaces'
 
 export class DateProviderImpl implements DateProvider {
   addDays(days: number): string {

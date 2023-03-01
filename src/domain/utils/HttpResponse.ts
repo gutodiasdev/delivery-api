@@ -1,4 +1,4 @@
-import { HttpCode } from '@/utils'
+import { HttpCode } from '@/domain/utils'
 
 interface HttpResponseArgs {
   success: boolean

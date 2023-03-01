@@ -1,11 +1,11 @@
 import 'express-async-errors'
 
-import './main/config/ModuleAlias'
+import './application/main/config/ModuleAlias'
 
 import express from 'express'
 
-import { ErrorHandler } from '@/errors'
-import { businessRoutes, userRouter } from '@/routes'
+import { businessRoutes, userRouter } from '@/application/routes'
+import { ErrorHandler } from '@/domain/errors'
 
 const app = express()
 app.use(express.json())

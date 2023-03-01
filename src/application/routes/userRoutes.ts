@@ -1,5 +1,8 @@
 
-import { createSessionController, createUserController } from '@/controllers'
+import {
+  createSessionController,
+  createUserController
+} from '@/application/controllers'
 import { Router } from 'express'
 
 const userRouter = Router()

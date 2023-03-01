@@ -1,4 +1,4 @@
-import { HttpResponse } from '@/utils'
+import { HttpResponse } from '@/domain/utils'
 import { Prisma } from '@prisma/client'
 
 export interface CreateBusiness {

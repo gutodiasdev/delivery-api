@@ -1,7 +1,7 @@
 
 import { CreateBusinessAddressRepository } from '@/data/contracts'
-import { CreateBusinessAddress } from '@/interfaces'
-import { HttpCode, HttpResponse } from '@/utils'
+import { CreateBusinessAddress } from '@/domain/interfaces'
+import { HttpCode, HttpResponse } from '@/domain/utils'
 
 export class CreateBusinessAddressService implements CreateBusinessAddress {
   constructor(

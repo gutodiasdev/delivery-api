@@ -1,4 +1,5 @@
 export * from './CreateBusinessAddressService'
+export * from './CreateBusinessService'
 export * from './CreateSessionService'
 export * from './CreateUserService'
 export * from './DateProviderService'

@@ -2,9 +2,9 @@ import { sign } from 'jsonwebtoken'
 import { v4 as uuid } from 'uuid'
 
 import { FindByEmailRepository } from '@/data/contracts'
-import { AppError } from '@/errors'
-import { CreateSession } from '@/interfaces'
-import { HttpCode } from '@/utils'
+import { AppError } from '@/domain/errors'
+import { CreateSession } from '@/domain/interfaces'
+import { HttpCode } from '@/domain/utils'
 import { compare } from 'bcryptjs'
 
 export class CreateSessionService implements CreateSession {

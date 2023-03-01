@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 
-import { HttpCode } from '@/utils'
+import { HttpCode } from '@/domain/utils'
 import { AppError } from './AppError'
 
 export function ErrorHandler(err: Error & AppError, req: Request, res: Response, next: NextFunction): any {

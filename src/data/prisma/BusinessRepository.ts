@@ -1,4 +1,4 @@
-import { prisma } from '@/main/config'
+import { prisma } from '@/application/main/config'
 import { Prisma } from '@prisma/client'
 import { CreateBusinessAddressRepository, CreateBusinessRepository } from '../contracts'
 

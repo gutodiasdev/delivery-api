@@ -1,8 +1,6 @@
-import { CreateBusinessController } from '@/controllers/CreateBusinessController'
 import { CreateBusinessRepository } from '@/data/contracts'
-import { BusinessRepository } from '@/data/prisma'
-import { CreateBusiness } from '@/interfaces/CreateBusiness'
-import { HttpCode, HttpResponse } from '@/utils'
+import { CreateBusiness } from '@/domain/interfaces'
+import { HttpCode, HttpResponse } from '@/domain/utils'
 
 export class CreateBusinessService implements CreateBusiness {
   constructor(
@@ -21,7 +19,3 @@ export class CreateBusinessService implements CreateBusiness {
     }
   }
 }
-
-const businessRepository = new BusinessRepository()
-const createBusinessService = new CreateBusinessService(businessRepository)
-export const createBusinessController = new CreateBusinessController(createBusinessService)

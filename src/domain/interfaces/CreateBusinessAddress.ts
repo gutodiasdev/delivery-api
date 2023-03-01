@@ -1,4 +1,4 @@
-import { HttpResponse } from '@/utils'
+import { HttpResponse } from '@/domain/utils'
 
 export interface CreateBusinessAddress {
   execute: (input: CreateBusinessAddress.Input) => Promise<CreateBusinessAddress.Output>

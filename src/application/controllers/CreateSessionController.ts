@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
 
+import { CreateSessionService } from '@/application/services'
 import { UserRepository } from '@/data/prisma'
-import { CreateSession } from '@/interfaces'
-import { CreateSessionService } from '@/services/CreateSessionService'
+import { CreateSession } from '@/domain/interfaces'
 
 export class CreateSessionController {
   constructor(

@@ -1,8 +1,9 @@
-import { BusinessRepository } from '@/data/prisma'
-import { CreateBusinessAddress } from '@/interfaces'
-import { CreateBusinessAddressService } from '@/services/CreateBusinessAddressService'
-import { HttpResponse } from '@/utils'
 import { Request, Response } from 'express'
+
+import { CreateBusinessAddressService } from '@/application/services'
+import { BusinessRepository } from '@/data/prisma'
+import { CreateBusinessAddress } from '@/domain/interfaces'
+import { HttpResponse } from '@/domain/utils'
 
 export class CreateBusinessAddressController {
   constructor(

@@ -7,9 +7,9 @@ import {
   UpdateRefreshTokenRepository,
   VerifyUserRepository
 } from '@/data/contracts'
-import { AppError } from '@/errors'
-import { CreateUser } from '@/interfaces'
-import { HttpCode } from '@/utils'
+import { AppError } from '@/domain/errors'
+import { CreateUser } from '@/domain/interfaces'
+import { HttpCode } from '@/domain/utils'
 
 export class CreateUserService implements CreateUser {
   constructor(

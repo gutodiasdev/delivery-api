@@ -1,5 +1,7 @@
-import { createBusinessAddressController } from '@/controllers/CreateBusinessAddressController'
-import { createBusinessController } from '@/services/CreateBusinessService'
+import {
+  createBusinessAddressController,
+  createBusinessController
+} from '@/application/controllers'
 import { Router } from 'express'
 
 const businessRoutes = Router()

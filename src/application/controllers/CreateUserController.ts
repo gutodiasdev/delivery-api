@@ -1,6 +1,6 @@
+import { CreateUserService } from '@/application/services'
 import { UserRepository } from '@/data/prisma'
-import { CreateUser } from '@/interfaces'
-import { CreateUserService } from '@/services/CreateUserService'
+import { CreateUser } from '@/domain/interfaces'
 import { Request, Response } from 'express'
 
 export class CreateUserController {
