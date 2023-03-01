@@ -37,7 +37,7 @@ export class CreateUserService implements CreateUser {
 
     await this.userRepository.updateRefreshToken({ email, refreshToken })
 
-    const token = sign({ name, email, password }, 'SECRET', { expiresIn: '15m' })
+    const token = sign({ name, email, password }, 'SECRET', { expiresIn: '15m', subject: email })
 
     return {
       token,
