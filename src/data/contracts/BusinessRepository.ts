@@ -25,3 +25,16 @@ export namespace CreateBusinessAddressRepository {
     businessId: string
   }
 }
+
+export interface CreateBusinessSocialRepository {
+  createSocial: (input: CreateBusinessSocialRepository.Input) => Promise<void>
+}
+
+export namespace CreateBusinessSocialRepository {
+  export type Input = {
+    businessId: string
+    facebook?: string
+    instagram?: string
+    whatsapp?: string
+  }
+}

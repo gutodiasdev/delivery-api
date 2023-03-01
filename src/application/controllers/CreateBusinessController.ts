@@ -2,8 +2,8 @@ import { Request, Response } from 'express'
 
 import { CreateBusinessService } from '@/application/services'
 import { BusinessRepository } from '@/data/prisma'
+import { HttpResponse } from '@/domain/builders'
 import { CreateBusiness } from '@/domain/interfaces'
-import { HttpResponse } from '@/domain/utils'
 
 export class CreateBusinessController {
   constructor(

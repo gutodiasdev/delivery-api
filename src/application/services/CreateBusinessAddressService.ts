@@ -1,7 +1,8 @@
 
 import { CreateBusinessAddressRepository } from '@/data/contracts'
+import { HttpResponse } from '@/domain/builders'
 import { CreateBusinessAddress } from '@/domain/interfaces'
-import { HttpCode, HttpResponse } from '@/domain/utils'
+import { HttpCode } from '@/domain/utils'
 
 export class CreateBusinessAddressService implements CreateBusinessAddress {
   constructor(
@@ -11,10 +12,10 @@ export class CreateBusinessAddressService implements CreateBusinessAddress {
   async execute(input: CreateBusinessAddressRepository.Input): Promise<HttpResponse> {
     await this.businessRepository.createAddress(input)
 
-    return {
+    return new HttpResponse({
       success: true,
       httpCode: HttpCode.CREATED,
       body: {}
-    }
+    })
   }
 }

@@ -1,4 +1,4 @@
-import { HttpResponse } from '@/domain/utils'
+import { HttpResponse } from '@/domain/builders'
 
 export interface CreateBusinessSocial {
   execute: (input: CreateBusinessSocial.Input) => Promise<HttpResponse>
