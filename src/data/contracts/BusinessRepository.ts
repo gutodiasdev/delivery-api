@@ -38,3 +38,14 @@ export namespace CreateBusinessSocialRepository {
     whatsapp?: string
   }
 }
+
+export interface CreateBusinessMenuRepository {
+  createMenu: (input: CreateBusinessMenuRepository.Input) => Promise<void>
+}
+
+export namespace CreateBusinessMenuRepository {
+  export type Input = {
+    businessId: string
+    name: string
+  }
+}

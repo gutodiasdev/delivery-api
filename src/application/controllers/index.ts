@@ -1,5 +1,6 @@
 export * from './CreateBusinessAddressController'
 export * from './CreateBusinessController'
+export * from './CreateBusinessMenuController'
 export * from './CreateBusinessSocialController'
 export * from './CreateSessionController'
 export * from './CreateUserController'
