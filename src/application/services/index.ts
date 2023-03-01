@@ -1,5 +1,6 @@
 export * from './CreateBusinessAddressService'
 export * from './CreateBusinessMenuService'
+export * from './CreateBusinessProductService'
 export * from './CreateBusinessService'
 export * from './CreateBusinessSocialService'
 export * from './CreateSessionService'

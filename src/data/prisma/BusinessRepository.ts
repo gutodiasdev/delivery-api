@@ -4,6 +4,7 @@ import { prisma } from '@/application/main/config'
 import {
   CreateBusinessAddressRepository,
   CreateBusinessMenuRepository,
+  CreateBusinessProductRepository,
   CreateBusinessRepository,
   CreateBusinessSocialRepository
 } from '@/data/contracts'
@@ -12,7 +13,8 @@ export class BusinessRepository implements
   CreateBusinessRepository,
   CreateBusinessAddressRepository,
   CreateBusinessSocialRepository,
-  CreateBusinessMenuRepository {
+  CreateBusinessMenuRepository,
+  CreateBusinessProductRepository {
   async create(input: Prisma.BusinessCreateInput): Promise<CreateBusinessRepository.Output> {
     const { name } = await prisma.business.create({ data: input })
     return {
@@ -40,6 +42,18 @@ export class BusinessRepository implements
       data: {
         businessId: input.businessId,
         name: input.name
+      }
+    })
+  }
+
+  async createProduct(input: CreateBusinessProductRepository.Input): Promise<void> {
+    await prisma.businessProducts.create({
+      data: {
+        businessMenuId: input.businessMenuId,
+        image: input.image,
+        price: input.price,
+        description: input.description,
+        title: input.title
       }
     })
   }

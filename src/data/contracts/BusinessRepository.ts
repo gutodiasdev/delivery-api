@@ -49,3 +49,17 @@ export namespace CreateBusinessMenuRepository {
     name: string
   }
 }
+
+export interface CreateBusinessProductRepository {
+  createProduct: (input: CreateBusinessProductRepository.Input) => Promise<void>
+}
+
+export namespace CreateBusinessProductRepository {
+  export type Input = {
+    businessMenuId: string
+    title: string
+    image: string
+    description: string
+    price: number
+  }
+}
