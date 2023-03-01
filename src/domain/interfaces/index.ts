@@ -1,6 +1,7 @@
 export * from './CreateaBusinessSocial'
 export * from './CreateBusiness'
 export * from './CreateBusinessAddress'
+export * from './CreateBusinessMenu'
 export * from './CreateSession'
 export * from './CreateUser'
 export * from './DateProvider'
