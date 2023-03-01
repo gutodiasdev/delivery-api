@@ -70,10 +70,11 @@ model BusinessSocial {
 }
 
 model BusinessMenu {
-  id         String   @id @default(uuid())
-  name       String
-  businessId String
-  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  id               String             @id @default(uuid())
+  name             String
+  businessId       String
+  businessProducts BusinessProducts[]
+  business         Business           @relation(fields: [businessId], references: [id], onDelete: Cascade)
 }
 
 model BusinessProducts {
@@ -83,6 +84,9 @@ model BusinessProducts {
   description String
   category    ProductsCategories[]
   price       Float
+
+  businessMenuId String
+  businessMenu   BusinessMenu @relation(fields: [businessMenuId], references: [id], onDelete: Cascade)
 }
 
 model ProductsCategories {
