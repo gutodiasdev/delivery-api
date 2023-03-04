@@ -57,6 +57,7 @@ export interface CreateBusinessProductRepository {
 export namespace CreateBusinessProductRepository {
   export type Input = {
     businessMenuId: string
+    stripeProductId: string
     title: string
     image: string
     description: string

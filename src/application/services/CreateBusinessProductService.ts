@@ -12,14 +12,16 @@ export class CreateBusinessProductService implements CreateBusinessProduct {
 
   async execute(input: CreateBusinessProduct.Input): Promise<HttpResponse<unknown>> {
     const parsedStripePrice = parsePriceToCents(input.price)
-    await this.stripeHandler.createProduct({
+
+    const product = await this.stripeHandler.createProduct({
       name: input.title,
       default_price_data: {
         currency: 'brl',
         unit_amount: parsedStripePrice
       }
     })
-    await this.businessRepository.createProduct(input)
+
+    await this.businessRepository.createProduct({ ...input, stripeProductId: product.id })
 
     return new HttpResponse({
       httpCode: HttpCode.CREATED

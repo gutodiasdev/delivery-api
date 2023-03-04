@@ -53,7 +53,8 @@ export class BusinessRepository implements
         image: input.image,
         price: input.price,
         description: input.description,
-        title: input.title
+        title: input.title,
+        stripeProductId: input.stripeProductId
       }
     })
   }

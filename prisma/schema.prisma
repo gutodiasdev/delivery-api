@@ -78,12 +78,13 @@ model BusinessMenu {
 }
 
 model BusinessProducts {
-  id          String               @id @default(uuid())
-  title       String
-  image       String
-  description String
-  category    ProductsCategories[]
-  price       Float
+  id              String               @id @default(uuid())
+  title           String
+  image           String
+  description     String
+  category        ProductsCategories[]
+  price           Float
+  stripeProductId String
 
   businessMenuId String
   businessMenu   BusinessMenu @relation(fields: [businessMenuId], references: [id], onDelete: Cascade)

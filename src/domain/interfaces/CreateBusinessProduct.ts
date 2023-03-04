@@ -13,5 +13,5 @@ export namespace CreateBusinessProduct {
     price: number
   }
 
-  export type Output = HttpResponse
+  export type Output = HttpResponse<unknown>
 }
