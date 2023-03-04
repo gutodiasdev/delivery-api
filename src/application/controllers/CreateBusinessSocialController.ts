@@ -9,7 +9,7 @@ export class CreateBusinessSocialController {
     private readonly createBusinessSocialService: CreateBusinessSocial
   ) { }
 
-  async handle(req: Request, res: Response): Promise<Response<HttpResponse>> {
+  async handle(req: Request, res: Response): Promise<Response<HttpResponse<CreateBusinessSocial.Output>>> {
     const result = await this.createBusinessSocialService.execute(req.body)
     return res.status(result.httpCode).json(result)
   }

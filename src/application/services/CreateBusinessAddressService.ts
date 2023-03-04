@@ -9,7 +9,7 @@ export class CreateBusinessAddressService implements CreateBusinessAddress {
     private readonly businessRepository: CreateBusinessAddressRepository
   ) { }
 
-  async execute(input: CreateBusinessAddressRepository.Input): Promise<HttpResponse> {
+  async execute(input: CreateBusinessAddressRepository.Input): Promise<HttpResponse<unknown>> {
     await this.businessRepository.createAddress(input)
 
     return new HttpResponse({

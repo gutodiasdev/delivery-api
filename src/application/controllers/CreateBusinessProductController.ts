@@ -9,7 +9,7 @@ export class CreateBusinessProductController {
     private readonly createBusinessProductService: CreateBusinessProduct
   ) { }
 
-  async handle(req: Request, res: Response): Promise<Response<HttpResponse>> {
+  async handle(req: Request, res: Response): Promise<Response<HttpResponse<CreateBusinessProduct.Output>>> {
     const result = await this.createBusinessProductService.execute(req.body)
     return res.status(result.httpCode).json(result)
   }

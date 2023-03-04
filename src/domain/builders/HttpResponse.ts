@@ -1,19 +1,19 @@
 import { HttpCode } from '@/domain/utils'
 
-interface HttpResponseArgs {
+export interface HttpResponseArgs<T> {
   success?: boolean
   httpCode?: HttpCode
-  body?: Record<string, unknown>
+  body?: T
 }
 
-export class HttpResponse {
+export class HttpResponse<T> {
   public readonly success: boolean
   public readonly httpCode: HttpCode
-  public readonly body?: Record<string, unknown>
+  public readonly body?: T
 
-  constructor(input: HttpResponseArgs) {
+  constructor(input: HttpResponseArgs<T>) {
     this.success = input.success ?? true
     this.httpCode = input.httpCode ?? HttpCode.SUCCESS
-    this.body = input.body ?? {}
+    this.body = input.body
   }
 }

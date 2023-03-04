@@ -8,7 +8,7 @@ export class CreateBusinessProductService implements CreateBusinessProduct {
     private readonly businessRepository: CreateBusinessProductRepository
   ) { }
 
-  async execute(input: CreateBusinessProduct.Input): Promise<HttpResponse> {
+  async execute(input: CreateBusinessProduct.Input): Promise<HttpResponse<unknown>> {
     await this.businessRepository.createProduct(input)
 
     return new HttpResponse({

@@ -1,4 +1,5 @@
-import { HttpResponse } from '../builders'
+import { HttpResponseArgs } from '../builders'
+import { Product } from './@types'
 
 export interface ListProducts {
   execute: (input: ListProducts.Input) => Promise<ListProducts.Output>
@@ -6,8 +7,8 @@ export interface ListProducts {
 
 export namespace ListProducts {
   export type Input = {
-    businessMenuId: string
+    menuId: string
   }
 
-  export type Output = HttpResponse
+  export type Output = HttpResponseArgs<Product[]>
 }

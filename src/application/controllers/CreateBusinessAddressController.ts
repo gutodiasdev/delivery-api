@@ -10,7 +10,7 @@ export class CreateBusinessAddressController {
     private readonly createBusinessAddressController: CreateBusinessAddress
   ) { }
 
-  async handle(req: Request, res: Response): Promise<Response<HttpResponse>> {
+  async handle(req: Request, res: Response): Promise<Response<HttpResponse<CreateBusinessAddress.Output>>> {
     const result = await this.createBusinessAddressController.execute(req.body)
     return res.status(result.httpCode).json(result)
   }

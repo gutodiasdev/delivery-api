@@ -10,7 +10,7 @@ export class CreateBusinessController {
     private readonly createBusinessService: CreateBusiness
   ) { }
 
-  async handle(req: Request, res: Response): Promise<Response<HttpResponse>> {
+  async handle(req: Request, res: Response): Promise<Response<HttpResponse<CreateBusiness.Output>>> {
     const result = await this.createBusinessService.execute(req.body)
     return res.status(result.httpCode).json(result)
   }

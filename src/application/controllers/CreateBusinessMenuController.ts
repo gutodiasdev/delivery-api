@@ -9,7 +9,7 @@ export class CreateBusinessMenuController {
     private readonly createBusinessMenuService: CreateBusinessMenu
   ) { }
 
-  async handle(req: Request, res: Response): Promise<Response<HttpResponse>> {
+  async handle(req: Request, res: Response): Promise<Response<HttpResponse<CreateBusinessMenu.Output>>> {
     const result = await this.createBusinessMenuService.execute(req.body)
     return res.status(result.httpCode).json(result)
   }
