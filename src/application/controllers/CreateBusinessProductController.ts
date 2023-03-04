@@ -1,6 +1,7 @@
 import { CreateBusinessProductService } from '@/application/services'
 import { BusinessRepository } from '@/data/prisma'
 import { HttpResponse } from '@/domain/builders'
+import { StripeHandler } from '@/domain/builders/StripeHandler'
 import { CreateBusinessProduct } from '@/domain/interfaces'
 import { Request, Response } from 'express'
 
@@ -16,5 +17,6 @@ export class CreateBusinessProductController {
 }
 
 const businessRepository = new BusinessRepository()
-const createBusinessProductService = new CreateBusinessProductService(businessRepository)
+const stripeHandler = new StripeHandler()
+const createBusinessProductService = new CreateBusinessProductService(businessRepository, stripeHandler)
 export const createBusinessProductController = new CreateBusinessProductController(createBusinessProductService)
