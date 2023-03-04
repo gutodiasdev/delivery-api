@@ -1,4 +1,5 @@
 import 'express-async-errors'
+import 'reflect-metadata'
 
 import './application/main/config/ModuleAlias'
 
