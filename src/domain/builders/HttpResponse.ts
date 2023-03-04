@@ -1,4 +1,5 @@
 import { HttpCode } from '@/domain/utils'
+import { Response } from 'express'
 
 export interface HttpResponseArgs<T> {
   success?: boolean
@@ -15,5 +16,13 @@ export class HttpResponse<T> {
     this.success = input.success ?? true
     this.httpCode = input.httpCode ?? HttpCode.SUCCESS
     this.body = input.body
+  }
+
+  async dispatcher(res: Response): Promise<Response> {
+    return res.status(this.httpCode).json({
+      success: this.success,
+      httpCode: this.httpCode,
+      body: this.body
+    })
   }
 }
