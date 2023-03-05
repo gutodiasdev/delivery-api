@@ -10,9 +10,12 @@ import {
 import { AppError } from '@/domain/errors'
 import { CreateUser } from '@/domain/interfaces'
 import { HttpCode } from '@/domain/utils'
+import { inject, injectable } from 'tsyringe'
 
+@injectable()
 export class CreateUserService implements CreateUser {
   constructor(
+    @inject('UserRepository')
     private readonly userRepository: CreateUserRepository & UpdateRefreshTokenRepository & VerifyUserRepository
   ) { }
 
