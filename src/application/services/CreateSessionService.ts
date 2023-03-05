@@ -6,9 +6,12 @@ import { AppError } from '@/domain/errors'
 import { CreateSession } from '@/domain/interfaces'
 import { HttpCode } from '@/domain/utils'
 import { compare } from 'bcryptjs'
+import { inject, injectable } from 'tsyringe'
 
+@injectable()
 export class CreateSessionService implements CreateSession {
   constructor(
+    @inject('UserRepository')
     private readonly userRepository: FindByEmailRepository
   ) { }
 

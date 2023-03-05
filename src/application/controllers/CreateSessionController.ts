@@ -1,21 +1,15 @@
 import { Request, Response } from 'express'
 
 import { CreateSessionService } from '@/application/services'
-import { UserRepository } from '@/data/prisma'
-import { CreateSession } from '@/domain/interfaces'
+import { container } from 'tsyringe'
 
 export class CreateSessionController {
-  constructor(
-    private readonly createSessionService: CreateSession
-  ) { }
-
   async handle(req: Request, res: Response): Promise<Response> {
-    const result = await this.createSessionService.execute(req.body)
+    const createSessionService = container.resolve(CreateSessionService)
+    const result = await createSessionService.execute(req.body)
 
     return res.status(200).json(result)
   }
 }
 
-const userRepository = new UserRepository()
-const createSessionService = new CreateSessionService(userRepository)
-export const createSessionController = new CreateSessionController(createSessionService)
+export const createSessionController = new CreateSessionController()
