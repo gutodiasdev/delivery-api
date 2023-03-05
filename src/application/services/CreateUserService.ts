@@ -1,5 +1,6 @@
 import { hash } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
+import { inject, injectable } from 'tsyringe'
 import { v4 as uuid } from 'uuid'
 
 import {
@@ -10,7 +11,6 @@ import {
 import { AppError } from '@/domain/errors'
 import { CreateUser } from '@/domain/interfaces'
 import { HttpCode } from '@/domain/utils'
-import { inject, injectable } from 'tsyringe'
 
 @injectable()
 export class CreateUserService implements CreateUser {

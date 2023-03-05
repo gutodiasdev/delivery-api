@@ -1,8 +1,9 @@
+import { Request, Response } from 'express'
+import { container } from 'tsyringe'
+
 import { CreateBusinessSocialService } from '@/application/services'
 import { HttpResponse } from '@/domain/builders'
 import { CreateBusinessSocial } from '@/domain/interfaces'
-import { Request, Response } from 'express'
-import { container } from 'tsyringe'
 
 export class CreateBusinessSocialController {
   async handle(req: Request, res: Response): Promise<Response<HttpResponse<CreateBusinessSocial.Output>>> {

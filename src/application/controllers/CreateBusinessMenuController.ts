@@ -1,8 +1,9 @@
+import { Request, Response } from 'express'
+import { container } from 'tsyringe'
+
 import { CreateBusinessMenuService } from '@/application/services'
 import { HttpResponse } from '@/domain/builders'
 import { CreateBusinessMenu } from '@/domain/interfaces'
-import { Request, Response } from 'express'
-import { container } from 'tsyringe'
 
 export class CreateBusinessMenuController {
   async handle(req: Request, res: Response): Promise<Response<HttpResponse<CreateBusinessMenu.Output>>> {

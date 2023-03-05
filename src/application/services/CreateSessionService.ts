@@ -1,12 +1,12 @@
+import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
+import { inject, injectable } from 'tsyringe'
 import { v4 as uuid } from 'uuid'
 
 import { FindByEmailRepository } from '@/data/contracts'
 import { AppError } from '@/domain/errors'
 import { CreateSession } from '@/domain/interfaces'
 import { HttpCode } from '@/domain/utils'
-import { compare } from 'bcryptjs'
-import { inject, injectable } from 'tsyringe'
 
 @injectable()
 export class CreateSessionService implements CreateSession {

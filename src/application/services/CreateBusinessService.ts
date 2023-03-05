@@ -1,8 +1,9 @@
+import { inject, injectable } from 'tsyringe'
+
 import { CreateBusinessRepository } from '@/data/contracts'
 import { HttpResponse } from '@/domain/builders'
 import { CreateBusiness } from '@/domain/interfaces'
 import { HttpCode } from '@/domain/utils'
-import { inject, injectable } from 'tsyringe'
 
 @injectable()
 export class CreateBusinessService implements CreateBusiness {

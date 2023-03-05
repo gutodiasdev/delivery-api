@@ -3,6 +3,6 @@ import { Router } from 'express'
 
 const productRoutes = Router()
 
-productRoutes.get('/list-all', async (req, res) => await listProductsController.handle(req, res))
+productRoutes.get('/list-all', listProductsController.handle)
 
 export { productRoutes }
