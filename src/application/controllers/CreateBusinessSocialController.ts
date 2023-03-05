@@ -1,20 +1,15 @@
 import { CreateBusinessSocialService } from '@/application/services'
-import { BusinessRepository } from '@/data/prisma'
 import { HttpResponse } from '@/domain/builders'
 import { CreateBusinessSocial } from '@/domain/interfaces'
 import { Request, Response } from 'express'
+import { container } from 'tsyringe'
 
 export class CreateBusinessSocialController {
-  constructor(
-    private readonly createBusinessSocialService: CreateBusinessSocial
-  ) { }
-
   async handle(req: Request, res: Response): Promise<Response<HttpResponse<CreateBusinessSocial.Output>>> {
-    const result = await this.createBusinessSocialService.execute(req.body)
+    const createBusinessSocialService = container.resolve(CreateBusinessSocialService)
+    const result = await createBusinessSocialService.execute(req.body)
     return res.status(result.httpCode).json(result)
   }
 }
 
-const businessRepository = new BusinessRepository()
-const createBusinessSocialService = new CreateBusinessSocialService(businessRepository)
-export const createBusinessSocialController = new CreateBusinessSocialController(createBusinessSocialService)
+export const createBusinessSocialController = new CreateBusinessSocialController()

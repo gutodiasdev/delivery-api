@@ -2,9 +2,12 @@ import { CreateBusinessSocialRepository } from '@/data/contracts'
 import { HttpResponse } from '@/domain/builders'
 import { CreateBusinessSocial } from '@/domain/interfaces'
 import { HttpCode } from '@/domain/utils'
+import { inject, injectable } from 'tsyringe'
 
+@injectable()
 export class CreateBusinessSocialService implements CreateBusinessSocial {
   constructor(
+    @inject('BusinessRepository')
     private readonly businessRepository: CreateBusinessSocialRepository
   ) { }
 
