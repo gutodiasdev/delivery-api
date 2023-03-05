@@ -6,6 +6,9 @@ import './application/main/config/ModuleAlias'
 import cors from 'cors'
 import express from 'express'
 
+import '@/application/services/containers'
+import '@/data/containers'
+
 import {
   businessRoutes,
   paymentRoutes,
