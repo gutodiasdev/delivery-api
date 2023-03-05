@@ -3,9 +3,12 @@ import { CreateBusinessAddressRepository } from '@/data/contracts'
 import { HttpResponse } from '@/domain/builders'
 import { CreateBusinessAddress } from '@/domain/interfaces'
 import { HttpCode } from '@/domain/utils'
+import { inject, injectable } from 'tsyringe'
 
+@injectable()
 export class CreateBusinessAddressService implements CreateBusinessAddress {
   constructor(
+    @inject('BusinessRepository')
     private readonly businessRepository: CreateBusinessAddressRepository
   ) { }
 
