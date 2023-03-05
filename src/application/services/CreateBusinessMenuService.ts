@@ -2,9 +2,12 @@ import { CreateBusinessMenuRepository } from '@/data/contracts'
 import { HttpResponse } from '@/domain/builders'
 import { CreateBusinessMenu } from '@/domain/interfaces'
 import { HttpCode } from '@/domain/utils'
+import { inject, injectable } from 'tsyringe'
 
+@injectable()
 export class CreateBusinessMenuService implements CreateBusinessMenu {
   constructor(
+    @inject('BusinessRepository')
     private readonly businessRepository: CreateBusinessMenuRepository
   ) { }
 
